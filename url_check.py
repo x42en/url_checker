@@ -57,6 +57,9 @@ def main(argv):
         print "Usage: {p} http://url.tocheck.com".format(p=argv[0])
         sys.exit(1)
 
+    if not (url.startswith('http://') or url.startswith('https://')):
+        url = 'http://{u}'.format(u=url)
+
     # Fake user-agent to bypass IDS
     ua = UserAgent()
     headers = {'User-Agent': ua.random}
